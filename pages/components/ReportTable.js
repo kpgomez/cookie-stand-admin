@@ -7,22 +7,22 @@ export default function ReportTable({ cookieStands, sumCookies }) {
         <table className='text-slate-600'>
           <thead>
             <tr>
-              <th className='p-1 border'>Location</th>
+              <th className='p-2 border'>Location</th>
               {hours.map((hour, idx) => {
                 return (
-                  <th key={idx} className='p-1 border'>
+                  <th key={idx} className='p-2 border'>
                     {hour}
                   </th>
                 );
               })}
-              <th className='p-1 border'>Totals</th>
+              <th className='p-2 border'>Totals</th>
             </tr>
           </thead>
           <tbody>
             {cookieStands.map((stand, idx) => {
               return (
-                <tr key={idx}>
-                  <td className='border'>{stand.location}</td>
+                <tr key={idx} className='text-center'>
+                  <td className='p-1 border'>{stand.location}</td>
                   {stand.hourlySales.map((hour, idx) => {
                     return (
                           <td key={idx} className='border'>{hour}</td>
@@ -36,6 +36,12 @@ export default function ReportTable({ cookieStands, sumCookies }) {
           <tfoot>
             <tr>
               <th className='totals'>Totals</th>
+              {/* {cookieStands.map((stand, idx) => {
+                return (
+                  <td key={idx}>{sumCookies(stand.hourlySales)[idx]}</td>
+                )
+              })} */}
+              <td>Column Totals</td>
             </tr>
           </tfoot>
         </table>
