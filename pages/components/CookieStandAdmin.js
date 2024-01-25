@@ -5,7 +5,7 @@ import CreateForm from "./CreateForm";
 import ReportTable from "./ReportTable";
 
 export default function CookieStandAdmin(
-  {cookieStandInputHandler, cookieStands}
+  {cookieStandInputHandler, cookieStands, sumCookies}
 ) {
   return (
     <>
@@ -15,7 +15,7 @@ export default function CookieStandAdmin(
       <Header />
       <main className="flex flex-col items-center">
         <CreateForm cookieStandInputHandler={cookieStandInputHandler} />
-        <ReportTable cookieStands={cookieStands} />
+        <ReportTable cookieStands={cookieStands} sumCookies={sumCookies} />
       </main>
       {/* <Main cookieStandInputHandler={cookieStandInputHandler} /> */}
       <Footer cookieStands={cookieStands} />

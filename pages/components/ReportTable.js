@@ -1,36 +1,46 @@
-import { hours } from "../data";
+import { hours } from '../data';
 
-export default function ReportTable({cookieStands}) {
+export default function ReportTable({ cookieStands, sumCookies }) {
   return (
     <>
       {cookieStands.length > 0 ? (
-        <table className="text-slate-600">
+        <table className='text-slate-600'>
           <thead>
             <tr>
-              <th className="p-1 border">Location</th>
+              <th className='p-1 border'>Location</th>
               {hours.map((hour, idx) => {
                 return (
-                  <th key={idx} className="p-1 border">
+                  <th key={idx} className='p-1 border'>
                     {hour}
                   </th>
                 );
               })}
-              <th className="p-1 border">Totals</th>
+              <th className='p-1 border'>Totals</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Single Location</td>
-            </tr>
+            {cookieStands.map((stand, idx) => {
+              return (
+                <tr key={idx}>
+                  <td className='border'>{stand.location}</td>
+                  {stand.hourlySales.map((hour, idx) => {
+                    return (
+                          <td key={idx} className='border'>{hour}</td>
+                    );
+                  })}
+                  <td className='border'>{sumCookies(stand.hourlySales)}</td>
+                </tr>
+              );
+            })}
           </tbody>
           <tfoot>
             <tr>
-              <th>Totals</th>
+              <th className='totals'>Totals</th>
             </tr>
           </tfoot>
         </table>
       ) : (
-        <p className="text-center text-slate-600">No Cookie Stands Available</p>
+        <p className='text-center text-slate-600'>No Cookie Stands Available</p>
       )}
     </>
   );

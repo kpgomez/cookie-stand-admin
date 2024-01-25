@@ -49,6 +49,7 @@ export default function CreateForm({cookieStandInputHandler}) {
                     placeholder="0"
                   />
                 </div>
+                <input name='hourlySales' value={hourlySales} type='hidden'/>
                 <div className="flex flex-col pt-9">
                   <button className="px-10 py-5 mr-5 text-2xl border-dotted bg-mauve bg-border-white border-rounded-3xl size">
                     Create
