@@ -16,7 +16,8 @@ module.exports = {
         "lime-green": "#C7EA46",
         "khaki": "#f4f1de",
         "salmon": "#eeb1a2",
-        "mauve": "#d7897e"
+        "mauve": "#d7897e",
+        "nude-pink": "#f5cac3",
       },
     },
   },
