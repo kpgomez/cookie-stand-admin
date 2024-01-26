@@ -1,11 +1,11 @@
-import Head from "next/head";
-import Header from "./Header";
-import Footer from "./Footer";
-import CreateForm from "./CreateForm";
-import ReportTable from "./ReportTable";
+import Head from 'next/head';
+import Header from './Header';
+import Footer from './Footer';
+import CreateForm from './CreateForm';
+import ReportTable from './ReportTable';
 
 export default function CookieStandAdmin(
-  {cookieStandInputHandler, cookieStands, sumCookies}
+  {cookieStandInputHandler, cookieStands, sumCookiesByLocation, hourlyTotals}
 ) {
   return (
     <>
@@ -13,9 +13,11 @@ export default function CookieStandAdmin(
         <title>Cookie Stand Admin</title>
       </Head>
       <Header />
-      <main className="flex flex-col items-center">
-        <CreateForm cookieStandInputHandler={cookieStandInputHandler} />
-        <ReportTable cookieStands={cookieStands} sumCookies={sumCookies} />
+      <main>
+        <div className='flex flex-col items-center rounded-md'>
+          <CreateForm cookieStandInputHandler={cookieStandInputHandler} />
+          <ReportTable reports={cookieStands} sumCookiesByLocation={sumCookiesByLocation} hourlyTotals={hourlyTotals} />
+        </div>
       </main>
       {/* <Main cookieStandInputHandler={cookieStandInputHandler} /> */}
       <Footer cookieStands={cookieStands} />

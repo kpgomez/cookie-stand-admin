@@ -1,13 +1,13 @@
 import { hours } from '../data';
 
-export default function ReportTable({ cookieStands, sumCookies }) {
+export default function ReportTable({ reports, sumCookiesByLocation, hourlyTotals }) {
   return (
     <>
-      {cookieStands.length > 0 ? (
+      {reports.length > 0 ? (
         <table className='text-slate-600'>
           <thead>
-            <tr>
-              <th className='p-2 border'>Location</th>
+            <tr className='bg-mauve'>
+              <th className='p-2'>Location</th>
               {hours.map((hour, idx) => {
                 return (
                   <th key={idx} className='p-2 border'>
@@ -19,29 +19,27 @@ export default function ReportTable({ cookieStands, sumCookies }) {
             </tr>
           </thead>
           <tbody>
-            {cookieStands.map((stand, idx) => {
+            {reports.map((report, idx) => {
               return (
                 <tr key={idx} className='text-center'>
-                  <td className='p-1 border'>{stand.location}</td>
-                  {stand.hourlySales.map((hour, idx) => {
+                   {/*https://chat.openai.com/c/1d072a3b-6bdf-478b-a5f0-9038dc5b8265*/}
+                  <td className={idx % 2 === 0 ? 'p-1 border bg-salmon' : 'p-1 border bg-nude-pink'}>{report.location}</td>
+                  {report.hourlySales.map((hour, index) => {
                     return (
-                          <td key={idx} className='border'>{hour}</td>
-                    );
+                          <td key={index} className={idx % 2 === 0 ? 'border bg-salmon' : 'border bg-nude-pink'}>{hour}</td>
+                    )
                   })}
-                  <td className='border'>{sumCookies(stand.hourlySales)}</td>
+                  <td className={idx % 2 === 0 ? 'border bg-salmon': 'border bg-nude-pink'}>{sumCookiesByLocation(report.hourlySales)}</td>
                 </tr>
               );
             })}
           </tbody>
           <tfoot>
             <tr>
-              <th className='totals'>Totals</th>
-              {/* {cookieStands.map((stand, idx) => {
-                return (
-                  <td key={idx}>{sumCookies(stand.hourlySales)[idx]}</td>
-                )
+              {/* <th className='border bg-mauve'>Totals</th>
+                {hourlyTotals(reports).map((hour, idx) => {
+                  <td key ={idx} className='border bg-mauve'>{hour}</td>
               })} */}
-              <td>Column Totals</td>
             </tr>
           </tfoot>
         </table>
