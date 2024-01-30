@@ -1,58 +1,72 @@
+import { useAuth } from '@/contexts/auth';
 import CookieStandAdmin from './components/CookieStandAdmin';
 import { useState } from 'react';
+import Head from 'next/head';
+import Footer from './components/Footer';
 
 export default function Home(){
-  const [cookieStands, setCookieStands] = useState([])
-
-  function cookieStandInputHandler(event) {
-    event.preventDefault();
-    
-    // add cookie stand location
-    const cookieStand = {
-      location: event.target.location.value,
-      minCust: event.target.minCust.value,
-      maxCust: event.target.maxCust.value,
-      avgCookies: event.target.avgCookies.value,
-      hourlySales: event.target.hourlySales.value.split(','), // https://chat.openai.com/c/4363975b-d876-4ce6-acf5-da05a208cce0
-    } 
-    
-    setCookieStands([...cookieStands, cookieStand])
-    
-  }
-  
-  function sumCookiesByLocation(allCookies) {
-    let sum = 0
-
-    for(let i = 0; i < allCookies.length; i++){
-      sum += parseInt(allCookies[i])
-    }
-
-    return sum
-  }
-
-  function hourlyTotals(allCookieStands) {
-    let totalsPerHour = [];
-    for(let i = 0; i < allCookieStands[0].hourlySales.length; i++){
-      let columnTotal = 0;
-      for(let j = 0; j < allCookieStands.length; j++){
-        columnTotal += parseInt(allCookieStands[j].hourlySales[i]);
-      }
-      totalsPerHour.push(columnTotal);
-    }
-  return totalsPerHour
-  }
-
-  function grandTotal(totalsPerHour) {
-    let grandTotal = 0;
-    for(let i = 0; i < totalsPerHour.length; i++){
-      grandTotal += totalsPerHour[i];
-    }
-    return grandTotal 
-  }
-
+  // const { login, user, logout } = useAuth();
   return (
     <div>
-      <CookieStandAdmin cookieStandInputHandler={cookieStandInputHandler} cookieStands={cookieStands} sumCookiesByLocation={sumCookiesByLocation} hourlyTotals={hourlyTotals} grandTotal={grandTotal} />
+      <Head>
+        <title>Cookie Stand Admin</title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <header>
+        {/* {user ? (
+          <Header user={user} logout={logout}/>
+        ) : (
+          <h1>Please Log Into Admin Access Page</h1>
+        )} */}
+        <Header />
+      </header>
+      {/* <main>
+        {user ? <CookieStandAdmin /> : <LoginForm login={login}/>}
+      </main> */}
+      <main>
+        <CookieStandAdmin />
+      </main>
+      <Footer />
     </div>
   )
+}
+
+function Header({}) {
+  return (
+    <header className='p-4 text-2xl font-bold text-[#1E2435] bg-[#35D399]'>
+      <div className='flex justify-between'>
+        <h1 className='ml-5'>Cookie Stand Admin</h1>
+        <div>
+          <button className='bg-[#D1FAE4] rounded text-xs m-1'>username placeholder</button>
+          <button className='bg-[#14A172] rounded text-xs m-1 p-1'>Sign Out</button>
+          <button className='py-0 m-1 text-xs rounded text-[#1E2435] bg-stone-50'>Overview </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function LoginForm() {
+  async function handleSubmit(e) {
+    e.preventDefault();
+    login(e.target.username.value, e.target.password.value);
+  }
+  
+  return (
+        <form onSubmit={handleSubmit}>
+            <fieldset>
+              <div>
+                <label htmlFor='username'>USER NAME</label>
+                <input className='font-bold' name='username' />
+              </div>
+              <div>
+                <label htmlFor='password'>PASSWORD</label>
+                <input className='font-bold' name='password' type='password'/>
+              </div>
+              <div>
+                <button >SIGN IN</button>
+              </div>
+            </fieldset>
+        </form>
+  );
 }

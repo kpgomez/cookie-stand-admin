@@ -11,7 +11,7 @@ export default function CreateForm({cookieStandInputHandler}) {
             <fieldset className=''>
               <div className='flex w-full mb-3'>
                 <div className='flex flex-col'>
-                  <label className='' for='location'>
+                  <label className='' htmlFor='location'>
                     ADD LOCATION
                   </label>
                   <input
@@ -23,7 +23,7 @@ export default function CreateForm({cookieStandInputHandler}) {
               </div>
               <div className='flex font-semibold'>
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label for='minCust'>Minimum Customers per Hour</label>
+                  <label htmlFor='minCust'>Minimum Customers per Hour</label>
                   <input
                     className='text-center text-[#1E2435]'
                     name='minCust'
@@ -32,7 +32,7 @@ export default function CreateForm({cookieStandInputHandler}) {
                 </div>
 
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label for='max-customers'>Maximum Customers per Hour</label>
+                  <label htmlFor='max-customers'>Maximum Customers per Hour</label>
                   <input
                     className='text-center'
                     name='maxCust'
@@ -40,7 +40,7 @@ export default function CreateForm({cookieStandInputHandler}) {
                   />
                 </div>
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label className='' for='avgCookies'>
+                  <label className='' htmlFor='avgCookies'>
                     Average Cookies per Sale
                   </label>
                   <input
