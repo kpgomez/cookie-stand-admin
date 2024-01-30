@@ -38,28 +38,21 @@ export default function Home(){
         columnTotal += parseInt(allCookieStands[j].hourlySales[i]);
       }
       totalsPerHour.push(columnTotal);
-  }
+    }
   return totalsPerHour
-}
+  }
 
-  // function hourlyTotals(allCookieStands){
-  //   let totals = []
+  function grandTotal(totalsPerHour) {
+    let grandTotal = 0;
+    for(let i = 0; i < totalsPerHour.length; i++){
+      grandTotal += totalsPerHour[i];
+    }
+    return grandTotal 
+  }
 
-  //   console.log(allCookieStands[0].hourlySales)
-
-  //   for(let i = 0; i < allCookieStands.length; i++){
-  //     let sum = 0
-  //     for(let j = 0; j < allCookieStands[i].hourlySales.length; j++){
-  //       sum += parseInt(allCookieStands[i].hourlySales[j])
-  //     }
-  //     totals.push(sum) 
-  //   }
-  //   console.log(totals)
-  //   return totals
-  // }
   return (
     <div>
-      <CookieStandAdmin cookieStandInputHandler={cookieStandInputHandler} cookieStands={cookieStands} sumCookiesByLocation={sumCookiesByLocation} hourlyTotals={hourlyTotals}/>
+      <CookieStandAdmin cookieStandInputHandler={cookieStandInputHandler} cookieStands={cookieStands} sumCookiesByLocation={sumCookiesByLocation} hourlyTotals={hourlyTotals} grandTotal={grandTotal} />
     </div>
   )
 }
