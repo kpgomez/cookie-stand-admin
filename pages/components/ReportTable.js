@@ -1,6 +1,7 @@
 import { hours } from '../data';
 
-export default function ReportTable({ reports, sumCookiesByLocation, hourlyTotals }) {
+
+export default function ReportTable({ reports, sumCookiesByLocation, hourlyTotals}) {
   return (
     <>
       {reports.length > 0 ? (
@@ -40,6 +41,12 @@ export default function ReportTable({ reports, sumCookiesByLocation, hourlyTotal
                 {hourlyTotals(reports).map((hour, idx) => {
                   <td key ={idx} className='border bg-mauve'>{hour}</td>
               })} */}
+              <th className='border bg-mauve'>Totals</th>
+              {hourlyTotals(reports).map((hourly_totals, idx) => {
+                return (
+                  <td key={idx} className='text-center border bg-mauve'>{hourly_totals}</td>
+                )
+              })}
             </tr>
           </tfoot>
         </table>
