@@ -5,53 +5,56 @@ export default function CreateForm({cookieStandInputHandler}) {
       <div className='text-center'>
         <div>
           <form
-            className='flex-col w-3/5 min-w-full p-3 m-5 text-4xl text-center border rounded-md text-slate-50 bg-salmon'
+            className='flex-col w-3/5 min-w-full p-3 m-5 text-center border rounded-md text-[#1E2435] bg-[#A8F4D0]'
             onSubmit={cookieStandInputHandler}
           >
-            Create a Cookie Stand
-            <fieldset className='w-full'>
-              <div className='mb-3'>
-                <div className='flex text-xl'>
-                  <label className='w-1/6" for="location'>
-                    Location
+            <fieldset className=''>
+              <div className='flex w-full mb-3'>
+                <div className='flex flex-col'>
+                  <label className='' for='location'>
+                    ADD LOCATION
                   </label>
                   <input
-                    className='w-5/6 text-slate-500'
+                    className='text-[#1E2435]'
                     name='location'
                   />
                 </div>
+                <button className='bg-[#15B981] rounded p-2'>CREATE STAND</button>
               </div>
-              <div className='flex'>
-                <div className='flex flex-col px-3 mx-2 text-xl rounded-md bg-nude-pink'>
+              <div className='flex font-semibold'>
+                <div className='flex flex-col px-3 mx-2 rounded-md'>
                   <label for='minCust'>Minimum Customers per Hour</label>
                   <input
-                    className='text-center text-slate-500'
+                    className='text-center text-[#1E2435]'
                     name='minCust'
+                    placeholder='0'
                   />
                 </div>
 
-                <div className='flex flex-col px-3 mx-2 text-xl rounded-md bg-nude-pink'>
+                <div className='flex flex-col px-3 mx-2 rounded-md'>
                   <label for='max-customers'>Maximum Customers per Hour</label>
                   <input
-                    className='text-center text-slate-500'
+                    className='text-center'
                     name='maxCust'
+                    placeholder='0'
                   />
                 </div>
-                <div className='flex flex-col px-3 mx-2 text-xl rounded-md bg-nude-pink'>
-                  <label className='text-1xl' for='avgCookies'>
+                <div className='flex flex-col px-3 mx-2 rounded-md'>
+                  <label className='' for='avgCookies'>
                     Average Cookies per Sale
                   </label>
                   <input
-                    className='text-center text-slate-500'
+                    className='text-center'
                     name='avgCookies'
+                    placeholder='0'
                   />
                 </div>
                 <input name='hourlySales' value={hourlySales} type='hidden'/>
-                <div className='flex flex-col'>
+                {/* <div className='flex flex-col'>
                   <button className='px-10 py-5 mr-5 text-2xl border-dotted rounded-md bg-mauve bg-border-white border-rounded-3xl'>
                     Create
                   </button>
-                </div>
+                </div> */}
               </div>
             </fieldset>
           </form>
