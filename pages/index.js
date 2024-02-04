@@ -1,11 +1,12 @@
 import { useAuth } from '@/contexts/auth';
+// import { useState } from 'react';
+
 import CookieStandAdmin from './components/CookieStandAdmin';
-import { useState } from 'react';
 import Head from 'next/head';
 import Footer from './components/Footer';
 
 export default function Home(){
-  // const { login, user, logout } = useAuth();
+  const { login, user, logout } = useAuth();
   return (
     <div>
       <Head>
@@ -13,19 +14,19 @@ export default function Home(){
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <header>
-        {/* {user ? (
+        {user ? (
           <Header user={user} logout={logout}/>
         ) : (
           <h1>Please Log Into Admin Access Page</h1>
-        )} */}
-        <Header />
+        )}
+        {/* <Header /> */}
       </header>
-      {/* <main>
-        {user ? <CookieStandAdmin /> : <LoginForm login={login}/>}
-      </main> */}
       <main>
-        <CookieStandAdmin />
+        {user ? <CookieStandAdmin /> : <LoginForm login={login}/>}
       </main>
+      {/* <main>
+        <CookieStandAdmin />
+      </main> */}
       <Footer />
     </div>
   )
@@ -46,7 +47,7 @@ function Header({}) {
   );
 }
 
-function LoginForm() {
+function LoginForm({ login }) {
   async function handleSubmit(e) {
     e.preventDefault();
     login(e.target.username.value, e.target.password.value);
@@ -54,7 +55,7 @@ function LoginForm() {
   
   return (
         <form onSubmit={handleSubmit}>
-            <fieldset>
+            <fieldset autoComplete='off'>
               <div>
                 <label htmlFor='username'>USER NAME</label>
                 <input className='font-bold' name='username' />
@@ -64,7 +65,7 @@ function LoginForm() {
                 <input className='font-bold' name='password' type='password'/>
               </div>
               <div>
-                <button >SIGN IN</button>
+                <button type='submit'>SIGN IN</button>
               </div>
             </fieldset>
         </form>

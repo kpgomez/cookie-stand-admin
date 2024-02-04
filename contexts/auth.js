@@ -13,7 +13,7 @@ export function useAuth() {
   return auth;
 }
 
-export default function AuthProvider(props) {
+export function AuthProvider(props) {
   const [state, setState] = useState({
     tokens: null,
     user: null,
