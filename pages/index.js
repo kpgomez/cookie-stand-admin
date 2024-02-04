@@ -12,14 +12,14 @@ export default function Home(){
         <title>Cookie Stand Admin</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <header> 
+      <header className='text-center'> 
         {user ? (
-          <Header user={user} logout={logout}/>
+          <Header user={user} logout={logout} />
         ) : (
           <h1>Please Log Into Admin Access Page</h1>
         )}
       </header>
-      <main>
+      <main className='flex place-content-center'>
         {user ? <CookieStandAdmin /> : <LoginForm login={login}/>}
       </main>
     </div>
@@ -50,20 +50,16 @@ function LoginForm({ login }) {
   }
   
   return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='bg-[#A8F4D0] min-w-[900px] p-5 text-center rounded-md border-[#15B981] border-2'>
             <fieldset autoComplete='off'>
-              <div>
-                <label htmlFor='username'>USER NAME</label>
-                <input className='font-bold' name='username' />
-              </div>
-              <div>
-                <label htmlFor='password'>PASSWORD</label>
-                <input className='font-bold' name='password' type='password'/>
-              </div>
-              <div>
-                <button type='submit'>SIGN IN</button>
+              <div className='flex flex-col'>
+                <label htmlFor='username' className='font-bold'>USER NAME</label>
+                <input name='username' placeholder='User Name' className='p-2 m-2'/>
+                <label htmlFor='password' className='font-bold'>PASSWORD</label>
+                <input name='password' type='password' placeholder='password' className='p-2 m-2 min-w-80'/>
+                <button type='submit' className='bg-[#15B981] min-w-80 rounded-sm m-2 p-2'>SIGN IN</button>
               </div>
             </fieldset>
         </form>
-  );
+  )
 }
