@@ -1,8 +1,15 @@
-import Footer from './Footer';
 import CreateForm from './CreateForm';
 import ReportTable from './ReportTable';
 import { useState } from 'react';
 
+
+export function Footer( { cookieStands } ) {
+  return (
+    <footer className='p-4 mt-5 bg-[#15B981] text-center'>
+      <p> {cookieStands.length} Locations Worldwide</p>
+    </footer>
+  );
+}
 
 export default function CookieStandAdmin() {
   const [cookieStands, setCookieStands] = useState([])
@@ -61,6 +68,9 @@ export default function CookieStandAdmin() {
           <ReportTable reports={cookieStands} sumCookiesByLocation={sumCookiesByLocation} hourlyTotals={hourlyTotals} grandTotal={grandTotal}/>
         </div>
       </main>
+      <Footer cookieStands={cookieStands}/>
     </>
   );
 }
+
+

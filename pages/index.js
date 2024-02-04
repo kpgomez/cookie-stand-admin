@@ -3,7 +3,6 @@ import { useAuth } from '@/contexts/auth';
 
 import CookieStandAdmin from './components/CookieStandAdmin';
 import Head from 'next/head';
-import Footer from './components/Footer';
 
 export default function Home(){
   const { login, user, logout } = useAuth();
@@ -13,39 +12,36 @@ export default function Home(){
         <title>Cookie Stand Admin</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <header>
+      <header> 
         {user ? (
           <Header user={user} logout={logout}/>
         ) : (
           <h1>Please Log Into Admin Access Page</h1>
         )}
-        {/* <Header /> */}
       </header>
       <main>
         {user ? <CookieStandAdmin /> : <LoginForm login={login}/>}
       </main>
-      {/* <main>
-        <CookieStandAdmin />
-      </main> */}
-      <Footer />
     </div>
   )
 }
 
-function Header({}) {
+function Header({ logout }) {
   return (
     <header className='p-4 text-2xl font-bold text-[#1E2435] bg-[#35D399]'>
       <div className='flex justify-between'>
         <h1 className='ml-5'>Cookie Stand Admin</h1>
         <div>
           <button className='bg-[#D1FAE4] rounded text-xs m-1'>username placeholder</button>
-          <button className='bg-[#14A172] rounded text-xs m-1 p-1'>Sign Out</button>
+          <button className='bg-[#14A172] rounded text-xs m-1 p-1' onClick={logout}>Sign Out</button>
           <button className='py-0 m-1 text-xs rounded text-[#1E2435] bg-stone-50'>Overview </button>
         </div>
       </div>
     </header>
   );
 }
+
+
 
 function LoginForm({ login }) {
   async function handleSubmit(e) {
