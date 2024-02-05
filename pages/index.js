@@ -16,32 +16,31 @@ export default function Home(){
         {user ? (
           <Header user={user} logout={logout} />
         ) : (
-          <h1>Please Log Into Admin Access Page</h1>
+          <p></p>
         )}
       </header>
-      <main className='flex place-content-center'>
+      <main>
         {user ? <CookieStandAdmin /> : <LoginForm login={login}/>}
       </main>
     </div>
   )
 }
 
-function Header({ logout }) {
+function Header({ logout, user }) {
+  console.log(user)
   return (
-    <header className='p-4 text-2xl font-bold text-[#1E2435] bg-[#35D399]'>
+    <header className='p-4 text-2xl text-[#1E2435] bg-[#35D399]'>
       <div className='flex justify-between'>
-        <h1 className='ml-5'>Cookie Stand Admin</h1>
+        <h1 className='font-bold ml-[200px]'>Cookie Stand Admin</h1>
         <div>
-          <button className='bg-[#D1FAE4] rounded text-xs m-1'>username placeholder</button>
-          <button className='bg-[#14A172] rounded text-xs m-1 p-1' onClick={logout}>Sign Out</button>
-          <button className='py-0 m-1 text-xs rounded text-[#1E2435] bg-stone-50'>Overview </button>
+          <button className='bg-[#ECFDF5] rounded text-xs m-1 px-2 py-1'>rudy</button>
+          <button className='bg-[#14A172] rounded text-xs m-1 px-2 py-1 text-gray-100' onClick={logout}>Sign Out</button>
+          <button className='px-2 py-1 m-1 text-xs rounded text-[#1E2435] bg-[#ECFDF5]'>Overview </button>
         </div>
       </div>
     </header>
-  );
+  )
 }
-
-
 
 function LoginForm({ login }) {
   async function handleSubmit(e) {
@@ -50,7 +49,7 @@ function LoginForm({ login }) {
   }
   
   return (
-        <form onSubmit={handleSubmit} className='bg-[#A8F4D0] min-w-[900px] p-5 text-center rounded-md border-[#15B981] border-2'>
+        <form onSubmit={handleSubmit} className='bg-[#A8F4D0] p-5 text-center rounded-md border-[#15B981] border-2 m-40'>
             <fieldset autoComplete='off'>
               <div className='flex flex-col'>
                 <label htmlFor='username' className='font-bold'>USER NAME</label>

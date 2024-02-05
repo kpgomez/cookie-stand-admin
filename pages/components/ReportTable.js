@@ -19,11 +19,11 @@ export default function ReportTable({ reports, sumCookiesByLocation, hourlyTotal
       {reports.length > 0 ? (
         <table className='text-[#1E2435]'>
           <thead>
-            <tr className='bg-[#35D399]'>
+            <tr className='bg-[#32D096]'>
               <th className='p-2 pr-40 border-2 border-green-600'>Location</th>
               {hours.map((hour, idx) => {
                 return (
-                  <th key={idx} className='p-2 border-2 border-green-600'>
+                  <th key={idx} className='p-2 text-left border-2 border-green-600'>
                     {hour}
                   </th>
                 );
@@ -34,12 +34,12 @@ export default function ReportTable({ reports, sumCookiesByLocation, hourlyTotal
           <tbody>
             {reports.map((report, idx) => {
               return (
-                <tr key={idx} className='text-center'>
+                <tr key={idx} className='text-right'>
                    {/*https://chat.openai.com/c/1d072a3b-6bdf-478b-a5f0-9038dc5b8265*/}
                     <td className={idx % 2 === 0 ? 'p-1 border-2 border-green-600 bg-[#A8F4D0] font-bold' : 'p-1 border-2 border-green-600 font-bold bg-[#6FE6B7]'}>{report.location}<button className='text-[#E79088]'>{trash_icon}</button></td>
                   {report.hourlySales.map((hour, index) => {
                     return (
-                          <td key={index} className={idx % 2 === 0 ? 'border-green-600 border-2 bg-[#A8F4D0]' : 'border-green-600 border-2 bg-[#6FE6B7]'}>{hour}</td>
+                          <td key={index} className={idx % 2 === 0 ? 'border-green-600 border-2 bg-[#A8F4D0] px-1' : 'border-green-600 border-2 bg-[#6FE6B7] px-1'}>{hour}</td>
                     )
                   })}
                   <td className={idx % 2 === 0 ? 'border-green-600 border-2 bg-[#A8F4D0]': 'border-green-600 border-2 bg-[#6FE6B7]'}>{sumCookiesByLocation(report.hourlySales)}</td>
@@ -49,18 +49,14 @@ export default function ReportTable({ reports, sumCookiesByLocation, hourlyTotal
           </tbody>
           <tfoot>
             <tr>
-              {/* <th className='border bg-mauve'>Totals</th>
-                {hourlyTotals(reports).map((hour, idx) => {
-                  <td key ={idx} className='border bg-mauve'>{hour}</td>
-              })} */}
-              <th className='border-green-600 border-2 bg-[#35D399]'>Totals</th>
+              <th className='border-green-600 border-2 bg-[#35D399] text-left'>Totals</th>
               {hourlyTotals(reports).map((hourly_totals, idx) => {
                 return (
-                  <td key={idx} className='text-center border-green-600 border-2 bg-[#35D399]'>{hourly_totals}</td>
+                  <td key={idx} className='text-right border-green-600 border-2 bg-[#35D399]'>{hourly_totals}</td>
                 )
               })
               }
-                  <td className='text-center border-green-600 border-2 first-line bg-[#35D399]'>{grandTotal(hourlyTotals(reports))}</td>
+                  <td className='text-right border-green-600 border-2 first-line bg-[#35D399]'>{grandTotal(hourlyTotals(reports))}</td>
             </tr>
           </tfoot>
         </table>

@@ -4,11 +4,12 @@ import { useState } from 'react';
 
 
 export function Footer( { cookieStands } ) {
+  console.log(cookieStands.length)
   return (
     <footer className='p-4 mt-5 bg-[#15B981] text-center'>
-      <p> {cookieStands.length} Locations Worldwide</p>
+      <p>{cookieStands.length} Locations Worldwide</p>
     </footer>
-  );
+  )
 }
 
 export default function CookieStandAdmin() {
@@ -63,14 +64,14 @@ export default function CookieStandAdmin() {
   return (
     <>
       <main>
-        <div className='flex flex-col items-center rounded-md'>
+        <div className='flex flex-col items-center text-xs rounded-md'>
           <CreateForm cookieStandInputHandler={cookieStandInputHandler} />
           <ReportTable reports={cookieStands} sumCookiesByLocation={sumCookiesByLocation} hourlyTotals={hourlyTotals} grandTotal={grandTotal}/>
         </div>
       </main>
       <Footer cookieStands={cookieStands}/>
     </>
-  );
+  )
 }
 
 

@@ -3,58 +3,53 @@ export default function CreateForm({cookieStandInputHandler}) {
   return (
     <>
       <div className='text-center'>
-        <div>
+        <div className=''>
           <form
-            className='flex-col w-3/5 min-w-full p-3 m-5 text-center border rounded-md text-[#1E2435] bg-[#A8F4D0]'
+            className='flex-col w-3/5 min-w-full p-3 my-5 text-center rounded-md text-[#1E2435] bg-[#A8F4D0] border-[#20D092] border-2'
             onSubmit={cookieStandInputHandler}
           >
-            <fieldset className=''>
-              <div className='flex w-full mb-3'>
-                <div className='flex flex-col'>
-                  <label className='' htmlFor='location'>
+            <fieldset>
+              <div className='flex flex-row mt-3 min-w-80'>
+                <div className='flex flex-col mr-5 basis-2/3'>
+                  <label className='font-semibold' htmlFor='location'>
                     ADD LOCATION
                   </label>
                   <input
-                    className='text-[#1E2435]'
+                    className='text-[#1E2435] p-1 mt-1'
                     name='location'
+                    placeholder='Cookie Stand Location'
                   />
                 </div>
-                <button className='bg-[#15B981] rounded p-2'>CREATE STAND</button>
+                <button className='bg-[#15B981] rounded basis-1/3 ml-5'>CREATE STAND</button>
               </div>
-              <div className='flex font-semibold'>
+              <div className='flex flex-row my-3 font-semibold'>
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label htmlFor='minCust'>Minimum Customers per Hour</label>
+                  <label htmlFor='minCust'>MINIMUM CUSTOMERS PER HOUR</label>
                   <input
-                    className='text-center text-[#1E2435]'
+                    className='p-1 text-left text-[#1E2435]'
                     name='minCust'
                     placeholder='0'
                   />
                 </div>
 
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label htmlFor='max-customers'>Maximum Customers per Hour</label>
+                  <label htmlFor='max-customers'>MAXIMUM CUSTOMER PER HOUR</label>
                   <input
-                    className='text-center'
+                    className='p-1 text-left'
                     name='maxCust'
                     placeholder='0'
                   />
                 </div>
+                
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label className='' htmlFor='avgCookies'>
-                    Average Cookies per Sale
-                  </label>
+                  <label className='' htmlFor='avgCookies'>AVERAGE COOKIES PER SALE</label>
                   <input
-                    className='text-center'
+                    className='p-1 text-left'
                     name='avgCookies'
                     placeholder='0'
                   />
                 </div>
                 <input name='hourlySales' value={hourlySales} type='hidden'/>
-                {/* <div className='flex flex-col'>
-                  <button className='px-10 py-5 mr-5 text-2xl border-dotted rounded-md bg-mauve bg-border-white border-rounded-3xl'>
-                    Create
-                  </button>
-                </div> */}
               </div>
             </fieldset>
           </form>
