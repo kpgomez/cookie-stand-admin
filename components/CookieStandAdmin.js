@@ -7,7 +7,7 @@ import { useAuth } from "@/contexts/auth";
 export default function CookieStandAdmin() {
   // const [cookieStands, setCookieStands] = useState([])
   const { user } = useAuth();
-  const { createResource, deleteResource } = useResource();
+  const { createResource, deleteResource, resources } = useResource();
 
   function cookieStandInputHandler(e) {
     e.preventDefault();
@@ -18,7 +18,7 @@ export default function CookieStandAdmin() {
       minimum: e.target.minimum.value,
       maximum: e.target.maximum.value,
       average: e.target.average.value,
-      hourly: e.target.hourly.value.split(","), // https://chat.openai.com/c/4363975b-d876-4ce6-acf5-da05a208cce0
+      hourly_sales: e.target.hourly.value.split(","), // https://chat.openai.com/c/4363975b-d876-4ce6-acf5-da05a208cce0
     };
     createResource(cookieStand);
 
@@ -37,10 +37,10 @@ export default function CookieStandAdmin() {
 
   function hourlyTotals(allCookieStands) {
     let totalsPerHour = [];
-    for (let i = 0; i < allCookieStands[0].hourly.length; i++) {
+    for (let i = 0; i < allCookieStands[0].hourly_sales.length; i++) {
       let columnTotal = 0;
       for (let j = 0; j < allCookieStands.length; j++) {
-        columnTotal += parseInt(allCookieStands[j].hourly[i]);
+        columnTotal += parseInt(allCookieStands[j].hourly_sales[i]);
       }
       totalsPerHour.push(columnTotal);
     }
@@ -64,7 +64,7 @@ export default function CookieStandAdmin() {
     <div className="flex flex-col items-center text-xs rounded-md">
       <CreateForm cookieStandInputHandler={cookieStandInputHandler} />
       <CookieStandTable
-        reports={cookieStands}
+        reports={resources || []}
         sumCookiesByLocation={sumCookiesByLocation}
         hourlyTotals={hourlyTotals}
         grandTotal={grandTotal}

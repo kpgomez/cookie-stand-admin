@@ -48,6 +48,7 @@ export default function CookieStandTable({
             </tr>
           </thead>
           <tbody>
+            {console.log(reports)}
             {reports.map((report, idx) => {
               return (
                 <tr key={idx} className="text-right">
@@ -67,7 +68,7 @@ export default function CookieStandTable({
                       {trash_icon}
                     </button>
                   </td>
-                  {report.hourly.map((hour, index) => {
+                  {report.hourly_sales.map((hour, index) => {
                     return (
                       <td
                         key={index}
@@ -88,7 +89,7 @@ export default function CookieStandTable({
                         : "border-green-600 border-2 bg-[#6FE6B7]"
                     }
                   >
-                    {sumCookiesByLocation(report.hourly)}
+                    {sumCookiesByLocation(report.hourly_sales)}
                   </td>
                 </tr>
               );
