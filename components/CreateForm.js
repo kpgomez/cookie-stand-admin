@@ -24,32 +24,32 @@ export default function CreateForm({cookieStandInputHandler}) {
               </div>
               <div className='flex flex-row my-3 font-semibold'>
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label htmlFor='minCust'>MINIMUM CUSTOMERS PER HOUR</label>
+                  <label htmlFor='minimum'>MINIMUM CUSTOMERS PER HOUR</label>
                   <input
                     className='p-1 text-left text-[#1E2435]'
-                    name='minCust'
+                    name='minimum'
                     placeholder='0'
                   />
                 </div>
 
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label htmlFor='max-customers'>MAXIMUM CUSTOMER PER HOUR</label>
+                  <label htmlFor='maximum'>MAXIMUM CUSTOMER PER HOUR</label>
                   <input
                     className='p-1 text-left'
-                    name='maxCust'
+                    name='maximum'
                     placeholder='0'
                   />
                 </div>
                 
                 <div className='flex flex-col px-3 mx-2 rounded-md'>
-                  <label className='' htmlFor='avgCookies'>AVERAGE COOKIES PER SALE</label>
+                  <label className='' htmlFor='average'>AVERAGE COOKIES PER SALE</label>
                   <input
                     className='p-1 text-left'
-                    name='avgCookies'
+                    name='average'
                     placeholder='0'
                   />
                 </div>
-                <input name='hourlySales' value={hourlySales} type='hidden'/>
+                <input name='hourly' value={hourlySales} type='hidden'/>
               </div>
             </fieldset>
           </form>

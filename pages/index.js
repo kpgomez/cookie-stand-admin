@@ -1,8 +1,7 @@
 import { useAuth } from '@/contexts/auth';
-// import { useState } from 'react';
-
-import CookieStandAdmin from './components/CookieStandAdmin';
+import CookieStandAdmin from '../components/CookieStandAdmin';
 import Head from 'next/head';
+
 
 export default function Home(){
   const { login, user, logout } = useAuth();
@@ -12,13 +11,11 @@ export default function Home(){
         <title>Cookie Stand Admin</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <header className='text-center'> 
-        {user ? (
-          <Header user={user} logout={logout} />
-        ) : (
-          <p></p>
-        )}
-      </header>
+      {user ? (
+        <Header user={user} logout={logout} />
+      ) : (
+        <p></p>
+      )}
       <main>
         {user ? <CookieStandAdmin /> : <LoginForm login={login}/>}
       </main>
@@ -26,8 +23,7 @@ export default function Home(){
   )
 }
 
-function Header({ logout, user }) {
-  console.log(user)
+function Header({ logout }) {
   return (
     <header className='p-4 text-2xl text-[#1E2435] bg-[#35D399]'>
       <div className='flex justify-between'>
@@ -39,6 +35,14 @@ function Header({ logout, user }) {
         </div>
       </div>
     </header>
+  )
+}
+
+function Footer( { cookieStands } ) {
+  return (
+    <footer className='p-4 mt-5 bg-[#15B981] text-center'>
+      <p>{cookieStands.length} Locations Worldwide</p>
+    </footer>
   )
 }
 

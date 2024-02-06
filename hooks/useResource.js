@@ -18,7 +18,8 @@ export default function useResource() {
 
     try {
       const response = await fetch(apiUrl, config());
-
+      
+      console.log(response)
       const responseJSON = await response.json();
 
       return responseJSON;
@@ -39,8 +40,9 @@ export default function useResource() {
   }
 
   async function deleteResource(id) {
+    console.log(id)
     try {
-      const url = apiUrl + id;
+      const url = apiUrl + id + "/delete";
       const options = config();
       options.method = 'DELETE';
       await fetch(url, options);
