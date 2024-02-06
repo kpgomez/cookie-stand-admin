@@ -6,5 +6,5 @@ export default function App({ Component, pageProps }) {
     <AuthProvider>
       <Component {...pageProps} />
     </AuthProvider>
-  ) 
+  );
 }

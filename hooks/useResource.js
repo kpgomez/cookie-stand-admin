@@ -1,9 +1,9 @@
 // Do CRUD stuff!
 
-import useSWR from 'swr';
+import useSWR from "swr";
 
 export const apiUrl = process.env.NEXT_PUBLIC_RESOURCE_URL;
-import { useAuth } from '@/contexts/auth';
+import { useAuth } from "@/contexts/auth";
 
 // defines a hook called useResource
 export default function useResource() {
@@ -18,8 +18,8 @@ export default function useResource() {
 
     try {
       const response = await fetch(apiUrl, config());
-      
-      console.log(response)
+
+      console.log(response);
       const responseJSON = await response.json();
 
       return responseJSON;
@@ -31,7 +31,7 @@ export default function useResource() {
   async function createResource(info) {
     try {
       const options = config();
-      (options.method = 'POST'), (options.body = JSON.stringify(info));
+      (options.method = "POST"), (options.body = JSON.stringify(info));
       await fetch(apiUrl, options);
       mutate(); // mutate causes complete collection to be refetched
     } catch (err) {
@@ -40,11 +40,11 @@ export default function useResource() {
   }
 
   async function deleteResource(id) {
-    console.log(id)
+    console.log(id);
     try {
       const url = apiUrl + id + "/delete";
       const options = config();
-      options.method = 'DELETE';
+      options.method = "DELETE";
       await fetch(url, options);
       mutate(); // mutate causes complete collection to be refetched
     } catch (err) {
@@ -61,8 +61,8 @@ export default function useResource() {
   function config() {
     return {
       headers: {
-        Authorization: 'Bearer ' + tokens.access,
-        'Content-Type': 'application/json',
+        Authorization: "Bearer " + tokens.access,
+        "Content-Type": "application/json",
       },
     };
   }
